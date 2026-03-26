@@ -63,7 +63,7 @@ def _load_data(mo, os, pd, Path):
         endpoint = os.getenv("R2_ENDPOINT_URL", "")
         key      = os.getenv("R2_ACCESS_KEY_ID", "")
         secret   = os.getenv("R2_SECRET_ACCESS_KEY", "")
-        bucket   = os.getenv("R2_BUCKET", "kr-forensic-finance")
+        bucket   = os.getenv("R2_BUCKET", "krff-shell")
 
         if all([endpoint, key, secret]):
             import duckdb

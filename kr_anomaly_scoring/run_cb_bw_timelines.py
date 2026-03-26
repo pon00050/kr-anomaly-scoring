@@ -20,7 +20,7 @@ from pathlib import Path
 
 import pandas as pd
 
-from _scoring import score_events
+from kr_anomaly_scoring._scoring import score_events
 
 try:
     from kr_forensic_core.paths import data_dir as _data_dir

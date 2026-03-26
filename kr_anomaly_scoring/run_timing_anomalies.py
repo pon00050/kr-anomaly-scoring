@@ -33,7 +33,7 @@ for _p in (str(ROOT), str(ROOT / "03_Analysis")):
     if _p not in sys.path:
         sys.path.insert(0, _p)
 
-from _scoring import score_disclosures  # noqa: E402
+from kr_anomaly_scoring._scoring import score_disclosures
 from kr_forensic_core.constants import TIMING_GAP_HOURS_ASSUMED  # noqa: E402
 
 MATERIAL_KEYWORDS = [

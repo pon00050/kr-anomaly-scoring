@@ -13,17 +13,8 @@ Usage:
 
 from __future__ import annotations
 
-import sys
-from pathlib import Path
-
-# Add package dir to sys.path so Marimo apps can use bare imports like
-# `from _scoring import score_events` when run interactively.
-_PKG_DIR = str(Path(__file__).parent)
-if _PKG_DIR not in sys.path:
-    sys.path.insert(0, _PKG_DIR)
-
-from kr_anomaly_scoring._scoring import score_events as score_cb_bw_events  # noqa: E402, F401
-from kr_anomaly_scoring._scoring import score_disclosures  # noqa: E402, F401
+from kr_anomaly_scoring._scoring import score_events as score_cb_bw_events  # noqa: F401
+from kr_anomaly_scoring._scoring import score_disclosures  # noqa: F401
 
 __version__ = "1.0.0"
 __all__ = ["score_cb_bw_events", "score_disclosures"]
