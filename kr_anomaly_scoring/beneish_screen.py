@@ -377,7 +377,7 @@ def _write_parquet(df_scored, os, pd, Path):
         secret   = os.getenv("R2_SECRET_ACCESS_KEY", "")
         if all([endpoint, key, secret]):
             import s3fs
-            bucket = os.getenv("R2_BUCKET", "kr-forensic-finance")
+            bucket = os.getenv("R2_BUCKET", "krff-shell")
             fs = s3fs.S3FileSystem(
                 key=key, secret=secret,
                 client_kwargs={"endpoint_url": endpoint},
