@@ -102,7 +102,7 @@ def _prepare_price(df_pv, pd):
 @app.cell
 def _score_events(df_cb, df_pv_clean, df_oh, df_map):
     """Score each CB/BW event against 4 manipulation signal flags."""
-    from _scoring import score_events
+    from kr_anomaly_scoring._scoring import score_events
     df_results = score_events(df_cb, df_pv_clean, df_oh, df_map)
     return df_results
 
