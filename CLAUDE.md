@@ -36,5 +36,5 @@ Reads parquets from `kr_forensic_core.paths.data_dir()` — same directory writt
 
 | Gap | Why | Status |
 |-----|-----|--------|
-| Officer network scoring not wired into main pipeline | Requires SEIBRO officer registration data (blocked) | Blocked — SEIBRO API ETA end of April 2026 |
+| Officer network scoring not wired into main pipeline | Requires SEIBRO officer registration data (blocked) — see XB-002 | Blocked — SEIBRO API ETA end of April 2026 |
 | No end-to-end test with real parquets | Requires kr-dart-pipeline outputs in CI | Deferred |
