@@ -24,14 +24,7 @@ try:
 except Exception:
     PROCESSED = Path(__file__).resolve().parents[1] / "01_Data" / "processed"
 _ROOT_FOR_ANALYSIS = PROCESSED.parent.parent
-ROOT = _ROOT_FOR_ANALYSIS  # kept for compat
-# PROCESSED set above via kr_forensic_core.paths.data_dir
 ANALYSIS = _ROOT_FOR_ANALYSIS / "03_Analysis"
-
-# Add project root and analysis dir to sys.path for src.constants and _scoring
-for _p in (str(ROOT), str(ROOT / "03_Analysis")):
-    if _p not in sys.path:
-        sys.path.insert(0, _p)
 
 from kr_anomaly_scoring._scoring import score_disclosures
 from kr_forensic_core.constants import TIMING_GAP_HOURS_ASSUMED  # noqa: E402
