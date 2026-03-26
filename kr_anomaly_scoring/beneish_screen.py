@@ -115,6 +115,7 @@ def _compute_beneish(df_fin, np, pd, date):
     """
     Calculate the 8 Beneish components and M-Score for each company-year pair
     (year T and year T-1).
+    Thresholds and sector sets are imported from kr_forensic_core.constants.
 
     Adjustments for Korean KOSDAQ data:
     - expense_method='nature' companies: GMI and SGAI set to 1.0 (neutral
@@ -122,6 +123,12 @@ def _compute_beneish(df_fin, np, pd, date):
     - lt_debt null in either year: LVGI is null (not assumed zero).
     - M-Score is null if more than 2 component ratios other than GMI/SGAI are null.
     """
+    from kr_forensic_core.constants import (
+        BENEISH_THRESHOLD,
+        BENEISH_CRITICAL_THRESHOLD,
+        HIGH_FP_SECTORS,
+    )
+
     df = df_fin.copy()
 
     # Ensure numeric types
@@ -279,12 +286,11 @@ def _compute_beneish(df_fin, np, pd, date):
     # Also null out if T-1 year has no data (no lag available — year is first year)
     df.loc[df["revenue_l"].isna(), "m_score"] = np.nan
 
-    df["flag"] = df["m_score"].notna() & (df["m_score"] > -1.78)
+    df["flag"] = df["m_score"].notna() & (df["m_score"] > BENEISH_THRESHOLD)
 
-    # High false-positive risk sectors: biotech/pharma (G3510) and medical devices (G3520)
-    fp_sectors = {"G3510", "G3520"}
+    # High false-positive risk sectors: biotech/pharma + medical devices
     if "wics_sector_code" in df.columns:
-        df["high_fp_risk"] = df["wics_sector_code"].isin(fp_sectors)
+        df["high_fp_risk"] = df["wics_sector_code"].isin(HIGH_FP_SECTORS)
     else:
         df["high_fp_risk"] = False
 
@@ -293,7 +299,7 @@ def _compute_beneish(df_fin, np, pd, date):
     conditions = [
         ~df["flag"],
         df["flag"] & df["high_fp_risk"],
-        df["flag"] & ~df["high_fp_risk"] & (df["m_score"] > -1.0),
+        df["flag"] & ~df["high_fp_risk"] & (df["m_score"] > BENEISH_CRITICAL_THRESHOLD),
     ]
     choices = ["Low", "Medium", "Critical"]
     df["risk_tier"] = np.select(conditions, choices, default="High")
