@@ -126,7 +126,7 @@ dev = [
 
 [package.metadata]
 requires-dist = [
-    { name = "kr-forensic-core", directory = "../kr-forensic-core" },
+    { name = "kr-forensic-core", editable = "../kr-forensic-core" },
     { name = "marimo", marker = "extra == 'marimo'" },
     { name = "networkx", specifier = ">=3.0" },
     { name = "numpy" },
@@ -142,7 +142,7 @@ dev = [{ name = "pytest", specifier = ">=9.0.2" }]
 [[package]]
 name = "kr-forensic-core"
 version = "1.0.0"
-source = { directory = "../kr-forensic-core" }
+source = { editable = "../kr-forensic-core" }
 
 [package.metadata]
 
