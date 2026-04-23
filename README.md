@@ -1,5 +1,7 @@
 # kr-anomaly-scoring
 
+**[Read the full write-up →](https://ronanwrites.vercel.app/manuals/forensic-platform-architecture)**
+
 CB/BW + timing + officer network anomaly scoring for Korean listed companies.
 
 Part of the [forensic accounting toolkit](https://github.com/pon00050/forensic-accounting-toolkit) ecosystem.
@@ -19,9 +21,9 @@ df_timing = score_disclosures(df_disc, df_pv, df_map)
 ## Install
 
 ```bash
-pip install kr-anomaly-scoring
+uv add git+https://github.com/pon00050/kr-anomaly-scoring
 # With Marimo interactive dashboards:
-pip install "kr-anomaly-scoring[marimo]"
+uv add "git+https://github.com/pon00050/kr-anomaly-scoring[marimo]"
 ```
 
 ## Scoring Flags (CB/BW)

@@ -38,3 +38,8 @@ Reads parquets from `kr_forensic_core.paths.data_dir()` — same directory writt
 |-----|-----|--------|
 | Officer network scoring not wired into main pipeline | Requires SEIBRO officer registration data (blocked) — see XB-002 | Blocked — SEIBRO API ETA end of April 2026 |
 | No end-to-end test with real parquets | Requires kr-dart-pipeline outputs in CI | Deferred |
+
+
+---
+
+**Domain knowledge** (regulatory analysis, buyer research, competitive intelligence, legal compliance) belongs in the hub vault: `forensic-accounting-toolkit/knowledge/`. Engineering docs (API patterns, test strategies, run logs) stay here. After creating a new domain knowledge note, copy it to the hub with gold-standard frontmatter. See hub `CLAUDE.md` §Knowledge Vault for the frontmatter contract.
